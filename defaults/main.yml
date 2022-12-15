@@ -1,0 +1,4 @@
+---
+# defaults file for coffeesprout.openvpn-client
+
+openvpn_client_config_name: botvpn

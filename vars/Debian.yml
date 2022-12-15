@@ -1,0 +1,10 @@
+---
+
+openvpn_folder: /etc/openvpn
+openvpn_root_group: sudo
+
+openvpn_client_config_folder: /etc/openvpn/client
+
+openvpn_packages:
+- "openvpn"
+- "python3-cryptography"

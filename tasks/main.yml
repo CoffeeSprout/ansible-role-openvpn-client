@@ -1,0 +1,30 @@
+---
+
+- name: ensure OS specifics are included
+  include_vars: "{{ item }}"
+  with_first_found:
+  - "{{ ansible_os_family }}.yml"
+  tags:
+  - always
+
+- name: ensure openvpn is installed
+  package:
+    name: "{{ openvpn_packages }}"
+    state: present
+  tags:
+  - install
+
+- name: install client configuration
+  copy:
+    content: "{{ openvpn_client_template }}"
+    dest: "{{ openvpn_client_config_folder }}/{{ openvpn_client_config_name }}.conf"
+
+- name: enable client configuration
+  service:
+    name: "openvpn-client@{{ openvpn_client_config_name }}"
+    enabled: True
+
+- name: start connection
+  service:
+    name: "openvpn-client@{{ openvpn_client_config_name }}"
+    state: started
