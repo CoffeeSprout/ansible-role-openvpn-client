@@ -1,34 +1,33 @@
 coffeesprout.openvpn-client
 =========
 
-Install OpenVPN and setup provided OpenVPN config client
+This Ansible role installs OpenVPN and sets up the provided OpenVPN client configuration.
 
 Requirements
 ------------
 
-Tested with Debian 11
+This role has been tested with Debian 11.
 
 Role Variables
 --------------
 
+    openvpn_client_template
 
-    openvpn\_client\_template
+This variable contains the .ovpn configuration that needs to be installed. You can store this in a variable, template it, or read it from a file.
+See the examples below.
 
-The string containing the .ovpn configuration that needs to be installed; You can store this in a variable, template this or read it from a file.
-See the examples
+    openvpn_packages
 
-    openvpn\_packages
+This variable specifies the packages to install for OpenVPN.
 
-The packages to install for OpenVPN
+    openvpn_client_config_name
 
-    openvpn\_client_config\_name
-
-The name for this openvpn configuration; Used in the configuration filename and the systemd unit
+This variable defines the name for the OpenVPN configuration. It is used in the configuration filename and the systemd unit.
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+Below is an example of how to use this role, with variables passed in as parameters:
 
       - hosts: lab
         become: True
